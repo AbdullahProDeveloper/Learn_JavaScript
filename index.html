@@ -3,468 +3,826 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ফ্রীতে ওয়েবসাইট হোস্টিং - সম্পূর্ণ গাইড</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>জাভাস্ক্রিপ্ট শিখুন - Learn JavaScript</title>
     <style>
+        /* Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
         :root {
-            --primary: #6a11cb;
-            --secondary: #2575fc;
+            --primary: #4a6bff;
+            --secondary: #ff6b6b;
+            --dark: #333;
             --light: #f8f9fa;
-            --dark: #343a40;
             --success: #28a745;
             --warning: #ffc107;
+            --info: #17a2b8;
         }
         
         body {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
-            font-family: 'Segoe UI', Arial, sans-serif;
-            min-height: 100vh;
-            padding: 20px 0;
+            background-color: #f5f7ff;
+            color: #333;
+            line-height: 1.6;
+            overflow-x: hidden;
         }
         
-        .container-main {
-            background: white;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-            overflow: hidden;
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, var(--primary), #6c5ce7);
+            color: white;
+            padding: 1rem;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
             max-width: 1200px;
             margin: 0 auto;
         }
         
-        .header {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
-            color: white;
-            padding: 30px;
-            text-align: center;
-        }
-        
-        .content-area {
-            padding: 30px;
-        }
-        
-        .step-card {
-            border: none;
-            border-radius: 15px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
-            transition: transform 0.3s;
-            margin-bottom: 20px;
-            height: 100%;
-        }
-        
-        .step-card:hover {
-            transform: translateY(-5px);
-        }
-        
-        .step-number {
-            width: 50px;
-            height: 50px;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
-            color: white;
-            border-radius: 50%;
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
             display: flex;
             align-items: center;
-            justify-content: center;
-            font-size: 24px;
-            font-weight: bold;
-            margin: 0 auto 20px;
         }
         
-        .option-card {
-            border: none;
-            border-radius: 15px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
-            padding: 25px;
-            margin-bottom: 25px;
-            transition: all 0.3s;
-            height: 100%;
-            position: relative;
-            overflow: hidden;
+        .logo-icon {
+            margin-right: 10px;
+            font-size: 2rem;
         }
         
-        .option-card::before {
-            content: 'ফ্রী';
-            position: absolute;
-            top: 15px;
-            right: -30px;
-            background: var(--success);
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 1.5rem;
+        }
+        
+        nav ul li a {
             color: white;
-            padding: 5px 30px;
-            font-weight: bold;
-            transform: rotate(45deg);
-            font-size: 14px;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            transition: all 0.3s ease;
         }
         
-        .option-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        nav ul li a:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
         }
         
-        .option-card h4 {
+        /* Language Toggle */
+        .language-toggle {
+            display: flex;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50px;
+            padding: 5px;
+        }
+        
+        .language-toggle button {
+            background: none;
+            border: none;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .language-toggle button.active {
+            background: white;
             color: var(--primary);
-            margin-bottom: 15px;
         }
         
-        .option-icon {
-            font-size: 2.5rem;
-            color: var(--primary);
-            margin-bottom: 15px;
+        /* Hero Section */
+        .hero {
+            padding: 8rem 2rem 4rem;
+            text-align: center;
+            background: linear-gradient(120deg, #e0e7ff, #d1e0ff);
+            border-radius: 0 0 30px 30px;
+            margin-bottom: 3rem;
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: var(--dark);
+            animation: fadeInUp 1s ease;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+            color: #555;
+            animation: fadeInUp 1.2s ease;
+        }
+        
+        .hero-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            animation: fadeInUp 1.4s ease;
+        }
+        
+        .btn {
+            padding: 12px 28px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-block;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
         
         .btn-primary {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
-            border: none;
-            padding: 12px 25px;
-            border-radius: 10px;
-            font-weight: 600;
-            margin-top: 10px;
-        }
-        
-        .comparison-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 30px 0;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
-        }
-        
-        .comparison-table th, .comparison-table td {
-            padding: 15px;
-            text-align: left;
-            border-bottom: 1px solid #eee;
-        }
-        
-        .comparison-table th {
-            background-color: var(--primary);
+            background: var(--primary);
             color: white;
         }
         
-        .comparison-table tr:nth-child(even) {
-            background-color: #f8f9fa;
+        .btn-primary:hover {
+            background: #3a5be0;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
         }
         
-        .comparison-table tr:last-child td {
-            border-bottom: none;
+        .btn-secondary {
+            background: white;
+            color: var(--primary);
+            border: 2px solid var(--primary);
         }
         
-        .check-mark {
-            color: var(--success);
-            font-weight: bold;
+        .btn-secondary:hover {
+            background: #f0f0f0;
+            transform: translateY(-3px);
         }
         
-        .cross-mark {
-            color: #dc3545;
-            font-weight: bold;
+        /* Features Section */
+        .features {
+            padding: 2rem;
+            max-width: 1200px;
+            margin: 0 auto 4rem;
         }
         
-        .footer {
-            background-color: var(--light);
-            padding: 20px;
+        .section-title {
             text-align: center;
-            border-top: 1px solid #dee2e6;
+            margin-bottom: 3rem;
+            font-size: 2.2rem;
+            color: var(--dark);
+            position: relative;
         }
         
-        .note-box {
-            background-color: #fff3cd;
-            border-left: 4px solid var(--warning);
-            padding: 15px;
-            margin: 20px 0;
-            border-radius: 5px;
+        .section-title:after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: var(--primary);
+            margin: 10px auto;
+            border-radius: 2px;
         }
         
-        .info-box {
-            background-color: #d1ecf1;
-            border-left: 4px solid #0c5460;
-            padding: 15px;
-            margin: 20px 0;
-            border-radius: 5px;
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
         }
         
-        .limitation {
-            color: #dc3545;
-            font-weight: 600;
+        .feature-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
         }
         
-        .feature-list {
-            list-style-type: none;
-            padding: 0;
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.12);
         }
         
-        .feature-list li {
-            padding: 8px 0;
-            border-bottom: 1px dashed #eee;
-        }
-        
-        .feature-list li:last-child {
-            border-bottom: none;
-        }
-        
-        .badge-free {
-            background-color: var(--success);
+        .feature-icon {
+            background: var(--primary);
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
             color: white;
-            padding: 3px 10px;
+        }
+        
+        .feature-content {
+            padding: 1.5rem;
+        }
+        
+        .feature-content h3 {
+            margin-bottom: 1rem;
+            color: var(--dark);
+        }
+        
+        /* Code Examples */
+        .code-examples {
+            background: #282c34;
+            color: white;
+            padding: 4rem 2rem;
             border-radius: 30px;
-            font-size: 12px;
-            font-weight: bold;
-            margin-left: 5px;
+            margin-bottom: 4rem;
+        }
+        
+        .code-container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .code-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+        
+        .code-header h2 {
+            font-size: 2rem;
+        }
+        
+        .code-tabs {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .code-tab {
+            padding: 8px 16px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .code-tab.active {
+            background: var(--primary);
+        }
+        
+        pre {
+            background: #1e2228;
+            padding: 1.5rem;
+            border-radius: 10px;
+            overflow-x: auto;
+            line-height: 1.5;
+        }
+        
+        code {
+            font-family: 'Fira Code', monospace;
+            font-size: 0.95rem;
+        }
+        
+        .token.comment {
+            color: #5c6370;
+        }
+        
+        .token.keyword {
+            color: #c678dd;
+        }
+        
+        .token.function {
+            color: #61afef;
+        }
+        
+        .token.operator {
+            color: #56b6c2;
+        }
+        
+        .token.string {
+            color: #98c379;
+        }
+        
+        /* Practice Section */
+        .practice {
+            padding: 2rem;
+            max-width: 1200px;
+            margin: 0 auto 4rem;
+        }
+        
+        .practice-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .practice-card {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+        }
+        
+        .practice-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.12);
+        }
+        
+        .practice-card h3 {
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+        
+        .practice-card p {
+            margin-bottom: 1.5rem;
+        }
+        
+        .code-editor {
+            background: #f8f9fa;
+            border-radius: 8px;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            border: 1px solid #e9ecef;
+        }
+        
+        .code-editor textarea {
+            width: 100%;
+            min-height: 120px;
+            border: none;
+            background: #282c34;
+            color: white;
+            padding: 1rem;
+            border-radius: 5px;
+            font-family: 'Fira Code', monospace;
+            resize: vertical;
+        }
+        
+        .run-btn {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .run-btn:hover {
+            background: #3a5be0;
+        }
+        
+        .output {
+            margin-top: 1rem;
+            padding: 1rem;
+            background: #e9ecef;
+            border-radius: 5px;
+            min-height: 60px;
+            font-family: 'Fira Code', monospace;
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        
+        .footer-links a {
+            color: #ddd;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-links a:hover {
+            color: white;
+        }
+        
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            nav ul li {
+                margin: 0.5rem;
+            }
+            
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .code-header {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+            }
+            
+            .code-tabs {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .hero {
+                padding: 6rem 1rem 3rem;
+            }
+            
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+            
+            .feature-card, .practice-card {
+                padding: 1.5rem;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="container container-main">
-        <div class="header">
-            <h1><i class="fas fa-rocket me-2"></i>ফ্রীতে ওয়েবসাইট হোস্টিং</h1>
-            <p class="lead">বিনামূল্যে আপনার PDF অর্ডার সিস্টেম অনলাইনে প্রকাশ করুন</p>
-        </div>
-        
-        <div class="content-area">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="note-box">
-                        <h4><i class="fas fa-lightbulb me-2"></i>গুরুত্বপূর্ণ তথ্য</h4>
-                        <p>ফ্রী হোস্টিং সার্ভিসগুলোতে সাধারণত কিছু সীমাবদ্ধতা থাকে, যেমন কাস্টম ডোমেইন, বিজ্ঞাপন প্রদর্শন, বা সীমিত resources। Production এর জন্য paid হোস্টিং better, তবে শুরু করার জন্য ফ্রী optionগুলো excellent।</p>
-                    </div>
-                </div>
+    <!-- Header Section -->
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <span class="logo-icon">📘</span>
+                <span class="lang-bn">জাভাস্ক্রিপ্ট শিখুন</span>
+                <span class="lang-en" style="display: none;">Learn JavaScript</span>
             </div>
             
-            <h2 class="text-center mb-5">ফ্রীতে ওয়েবসাইট হোস্ট করার ধাপসমূহ</h2>
+            <nav>
+                <ul>
+                    <li><a href="#" class="lang-bn">হোম</a><a href="#" class="lang-en" style="display: none;">Home</a></li>
+                    <li><a href="#" class="lang-bn">টিউটোরিয়াল</a><a href="#" class="lang-en" style="display: none;">Tutorials</a></li>
+                    <li><a href="#" class="lang-bn">উদাহরণ</a><a href="#" class="lang-en" style="display: none;">Examples</a></li>
+                    <li><a href="#" class="lang-bn">অনুশীলন</a><a href="#" class="lang-en" style="display: none;">Practice</a></li>
+                    <li><a href="#" class="lang-bn">রেফারেন্স</a><a href="#" class="lang-en" style="display: none;">Reference</a></li>
+                </ul>
+            </nav>
             
-            <div class="row">
-                <div class="col-md-4 mb-4">
-                    <div class="step-card text-center p-4">
-                        <div class="step-number">1</div>
-                        <h4>হোস্টিং provider নির্বাচন</h4>
-                        <p>নিচের ফ্রী হোস্টিং options থেকে একটি বেছে নিন</p>
-                    </div>
-                </div>
-                <div class="col-md-4 mb-4">
-                    <div class="step-card text-center p-4">
-                        <div class="step-number">2</div>
-                        <h4>অ্যাকাউন্ট তৈরি করুন</h4>
-                        <p>ইমেইল দিয়ে রেজিস্ট্রেশন করুন</p>
-                    </div>
-                </div>
-                <div class="col-md-4 mb-4">
-                    <div class="step-card text-center p-4">
-                        <div class="step-number">3</div>
-                        <h4>ফাইল আপলোড করুন</h4>
-                        <p>আপনার ওয়েবসাইটের ফাইলগুলি আপলোড করুন</p>
-                    </div>
-                </div>
-            </div>
-            
-            <h3 class="text-center mt-5 mb-4">ফ্রী হোস্টিং অপশনসমূহ</h3>
-            
-            <div class="row">
-                <div class="col-md-4 mb-4">
-                    <div class="option-card text-center">
-                        <div class="option-icon">
-                            <i class="fab fa-github"></i>
-                        </div>
-                        <h4>GitHub Pages</h4>
-                        <p>সবচেয়ে জনপ্রিয় ফ্রী হোস্টিং সলিউশন</p>
-                        <ul class="feature-list">
-                            <li><i class="fas fa-check-circle check-mark me-2"></i>100% ফ্রী</li>
-                            <li><i class="fas fa-check-circle check-mark me-2"></i>কোন বিজ্ঞাপন নেই</li>
-                            <li><i class="fas fa-check-circle check-mark me-2"></i>SSL Certificate</li>
-                            <li><i class="fas fa-check-circle check-mark me-2"></i>কাস্টম ডোমেইন</li>
-                            <li class="limitation"><i class="fas fa-exclamation-circle me-2"></i>সার্ভার-সাইড কোড সাপোর্ট করে না</li>
-                        </ul>
-                        <a href="https://pages.github.com/" target="_blank" class="btn btn-primary">ব্যবহার করুন</a>
-                    </div>
-                </div>
-                
-                <div class="col-md-4 mb-4">
-                    <div class="option-card text-center">
-                        <div class="option-icon">
-                            <i class="fab fa-netlify"></i>
-                        </div>
-                        <h4>Netlify</h4>
-                        <p>আধুনিক ওয়েবসাইটের জন্য চমৎকার প্ল্যাটফর্ম</p>
-                        <ul class="feature-list">
-                            <li><i class="fas fa-check-circle check-mark me-2"></i>100% ফ্রী Tier</li>
-                            <li><i class="fas fa-check-circle check-mark me-2"></i>অটো Deployment</li>
-                            <li><i class="fas fa-check-circle check-mark me-2"></i>ফর্ম হ্যান্ডলিং</li>
-                            <li><i class="fas fa-check-circle check-mark me-2"></i>SSL Certificate</li>
-                            <li class="limitation"><i class="fas fa-exclamation-circle me-2"></i>ব্যান্ডউইথ সীমিত</li>
-                        </ul>
-                        <a href="https://www.netlify.com/" target="_blank" class="btn btn-primary">ব্যবহার করুন</a>
-                    </div>
-                </div>
-                
-                <div class="col-md-4 mb-4">
-                    <div class="option-card text-center">
-                        <div class="option-icon">
-                            <i class="fab fa-google"></i>
-                        </div>
-                        <h4>Firebase Hosting</h4>
-                        <p>Google এর ফ্রী হোস্টিং সার্ভিস</p>
-                        <ul class="feature-list">
-                            <li><i class="fas fa-check-circle check-mark me-2"></i>Google ইনফ্রাস্ট্রাকচার</li>
-                            <li><i class="fas fa-check-circle check-mark me-2"></i>SSL Certificate</li>
-                            <li><i class="fas fa-check-circle check-mark me-2"></i>CDN এক্সেস</li>
-                            <li><i class="fas fa-check-circle check-mark me-2"></i>কাস্টম ডোমেইন</li>
-                            <li class="limitation"><i class="fas fa-exclamation-circle me-2"></i>ব্যবহার সীমিত</li>
-                        </ul>
-                        <a href="https://firebase.google.com/docs/hosting" target="_blank" class="btn btn-primary">ব্যবহার করুন</a>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="row mt-4">
-                <div class="col-md-6 mb-4">
-                    <div class="option-card text-center">
-                        <div class="option-icon">
-                            <i class="fas fa-cloud"></i>
-                        </div>
-                        <h4>Vercel</h4>
-                        <p>Next.js ক্রিয়েটরদের হোস্টিং প্ল্যাটফর্ম</p>
-                        <ul class="feature-list">
-                            <li><i class="fas fa-check-circle check-mark me-2"></i>অটো Deployment</li>
-                            <li><i class="fas fa-check-circle check-mark me-2"></i>SSL Certificate</li>
-                            <li><i class="fas fa-check-circle check-mark me-2"></i>কাস্টম ডোমেইন</li>
-                            <li><i class="fas fa-check-circle check-mark me-2"></i>গ্লোবাল CDN</li>
-                            <li class="limitation"><i class="fas fa-exclamation-circle me-2"></i>ব্যান্ডউইথ সীমিত</li>
-                        </ul>
-                        <a href="https://vercel.com/" target="_blank" class="btn btn-primary">ব্যবহার করুন</a>
-                    </div>
-                </div>
-                
-                <div class="col-md-6 mb-4">
-                    <div class="option-card text-center">
-                        <div class="option-icon">
-                            <i class="fas fa-server"></i>
-                        </div>
-                        <h4>000WebHost</h4>
-                        <p>cPanel based ফ্রী হোস্টিং</p>
-                        <ul class="feature-list">
-                            <li><i class="fas fa-check-circle check-mark me-2"></i>cPanel এক্সেস</li>
-                            <li><i class="fas fa-check-circle check-mark me-2"></i>MySQL ডাটাবেজ</li>
-                            <li><i class="fas fa-check-circle check-mark me-2"></i>ফাইল Manager</li>
-                            <li><i class="fas fa-check-circle check-mark me-2"></i>ওয়েবসাইট Builder</li>
-                            <li class="limitation"><i class="fas fa-exclamation-circle me-2"></i>বিজ্ঞাপন</li>
-                        </ul>
-                        <a href="https://www.000webhost.com/" target="_blank" class="btn btn-primary">ব্যবহার করুন</a>
-                    </div>
-                </div>
-            </div>
-            
-            <h3 class="text-center mt-5 mb-4">হোস্টিং প্রদানকারীদের তুলনা</h3>
-            
-            <div class="table-responsive">
-                <table class="comparison-table">
-                    <thead>
-                        <tr>
-                            <th>ফিচার</th>
-                            <th>GitHub Pages</th>
-                            <th>Netlify</th>
-                            <th>Firebase Hosting</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>মূল্য</td>
-                            <td>100% ফ্রী</td>
-                            <td>100% ফ্রী</td>
-                            <td>100% ফ্রী</td>
-                        </tr>
-                        <tr>
-                            <td>ব্যান্ডউইথ</td>
-                            <td>অসীম</td>
-                            <td>100GB/মাস</td>
-                            <td>10GB/মাস</td>
-                        </tr>
-                        <tr>
-                            <td>কাস্টম ডোমেইন</td>
-                            <td><i class="fas fa-check-circle check-mark"></i></td>
-                            <td><i class="fas fa-check-circle check-mark"></i></td>
-                            <td><i class="fas fa-check-circle check-mark"></i></td>
-                        </tr>
-                        <tr>
-                            <td>SSL Certificate</td>
-                            <td><i class="fas fa-check-circle check-mark"></i></td>
-                            <td><i class="fas fa-check-circle check-mark"></i></td>
-                            <td><i class="fas fa-check-circle check-mark"></i></td>
-                        </tr>
-                        <tr>
-                            <td>Backend সাপোর্ট</td>
-                            <td><i class="fas fa-times-circle cross-mark"></i></td>
-                            <td><i class="fas fa-check-circle check-mark"></i></td>
-                            <td><i class="fas fa-check-circle check-mark"></i></td>
-                        </tr>
-                        <tr>
-                            <td>ডাটাবেজ</td>
-                            <td><i class="fas fa-times-circle cross-mark"></i></td>
-                            <td><i class="fas fa-check-circle check-mark"></i></td>
-                            <td><i class="fas fa-check-circle check-mark"></i></td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-            
-            <div class="info-box mt-5">
-                <h4><i class="fas fa-info-circle me-2"></i>গুরুত্বপূর্ণ পরামর্শ</h4>
-                <p>আপনার PDF অর্ডার সিস্টেমের জন্য যেহেতু ইউজার অ্যাকাউন্ট এবং ডাটাবেজ প্রয়োজন, তাই Netlify বা Firebase Hosting বেছে নিন। GitHub Pages শুধুমাত্র static ওয়েবসাইটের জন্য suitable।</p>
-            </div>
-            
-            <div class="row mt-5">
-                <div class="col-md-6">
-                    <div class="option-card">
-                        <h4><i class="fas fa-upload me-2"></i>Netlify তে Deployment করার</h4>
-                        <ol>
-                            <li>Netlify.com এ গিয়ে সাইন আপ করুন</li>
-                            <li>"New site from Git" নির্বাচন করুন</li>
-                            <li>আপনার GitHub repository connect করুন</li>
-                            <li>Build settings configure করুন</li>
-                            <li>Deploy করুন এবং আপনার site link copy করুন</li>
-                            <li>কাস্টম ডোমেইন add করুন (যদি প্রয়োজন হয়)</li>
-                        </ol>
-                        <a href="https://www.netlify.com/blog/2016/09/29/a-step-by-step-guide-deploying-on-netlify/" target="_blank" class="btn btn-primary">বিস্তারিত指南</a>
-                    </div>
-                </div>
-                
-                <div class="col-md-6">
-                    <div class="option-card">
-                        <h4><i class="fab fa-google me-2"></i>Firebase Hosting এ Deployment</h4>
-                        <ol>
-                            <li>Google অ্যাকাউন্ট দিয়ে Firebase এ login করুন</li>
-                            <li>একটি new project তৈরি করুন</li>
-                            <li>Firebase CLI install করুন</li>
-                            <li>আপনার প্রোজেক্ট ফোল্ডারে initialize করুন</li>
-                            <li>ফাইলগুলি deploy করুন</li>
-                            <li>আপনার hosting URL টি share করুন</li>
-                        </ol>
-                        <a href="https://firebase.google.com/docs/hosting/quickstart" target="_blank" class="btn btn-primary">বিস্তারিত</a>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="note-box mt-4">
-                <h4><i class="fas fa-exclamation-triangle me-2"></i>সীমাবদ্ধতা সম্পর্কে</h4>
-                <p>ফ্রী হোস্টিং options গুলোতে কিছু সীমাবদ্ধতা থাকে। যদি আপনার ওয়েবসাইটে অনেক traffic আসে, বা বেশি storage প্রয়োজন হয়, তাহলে paid plan এ upgrade করতে হতে পারে। তবে শুরু করার জন্য ফ্রী optionsই যথেষ্ট।</p>
+            <div class="language-toggle">
+                <button id="bn-btn" class="active">বাংলা</button>
+                <button id="en-btn">English</button>
             </div>
         </div>
-        
-        <div class="footer">
-            <p>&copy; ২০২৩ PDF অর্ডার সিস্টেম। সকল অধিকার সংরক্ষিত।</p>
-            <p class="text-muted">এই গাইডটি আপনার ওয়েবসাইট বিনামূল্যে অনলাইনে প্রকাশ করতে সাহায্য করবে</p>
-        </div>
-    </div>
+    </header>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
-    <script>
-        // Netlify deployment এর জন্য ফর্ম
-        document.addEventListener('DOMContentLoaded', function() {
-            const deploymentLinks = document.querySelectorAll('.deployment-link');
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1 class="lang-bn">জাভাস্ক্রিপ্ট শেখার সম্পূর্ণ গাইড</h1>
+        <h1 class="lang-en" style="display: none;">Complete Guide to Learning JavaScript</h1>
+        
+        <p class="lang-bn">শূন্য থেকে শুরু করে মাস্টারি পর্যন্ত। প্রতিটি ধাপে ব্যাখ্যা, লাইভ উদাহরণ এবং অনুশীলন সমস্যা সহ।</p>
+        <p class="lang-en" style="display: none;">From zero to mastery. With explanations, live examples and practice problems at every step.</p>
+        
+        <div class="hero-buttons">
+            <a href="#" class="btn btn-primary lang-bn">শেখা শুরু করুন</a>
+            <a href="#" class="btn btn-primary lang-en" style="display: none;">Start Learning</a>
             
-            deploymentLinks.forEach(link => {
-                link.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    const platform = this.getAttribute('data-platform');
-                    alert(`আপনি ${platform} তে deployment process শুরু করতে যাচ্ছেন। বিস্তারিত instructions এর জন্য আমাদের গাইড দেখুন।`);
-                    window.open(this.href, '_blank');
+            <a href="#" class="btn btn-secondary lang-bn">প্রোজেক্ট দেখুন</a>
+            <a href="#" class="btn btn-secondary lang-en" style="display: none;">View Projects</a>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <h2 class="section-title lang-bn">কেন এই ওয়েবসাইটে শিখবেন?</h2>
+        <h2 class="section-title lang-en" style="display: none;">Why Learn Here?</h2>
+        
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">📖</div>
+                <div class="feature-content">
+                    <h3 class="lang-bn">সম্পূর্ণ বাংলায় ব্যাখ্যা</h3>
+                    <h3 class="lang-en" style="display: none;">Full Explanation in Bengali</h3>
+                    <p class="lang-bn">জাভাস্ক্রিপ্টের প্রতিটি বিষয় সহজ বাংলায় ব্যাখ্যা করা হয়েছে, যা আপনার বুঝতে সাহায্য করবে।</p>
+                    <p class="lang-en" style="display: none;">Every JavaScript topic is explained in simple Bengali to help you understand better.</p>
+                </div>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">🔄</div>
+                <div class="feature-content">
+                    <h3 class="lang-bn">লাইভ কোড এডিটর</h3>
+                    <h3 class="lang-en" style="display: none;">Live Code Editor</h3>
+                    <p class="lang-bn">কোড লিখে সাথে সাথে আউটপুট দেখুন এবং বুঝুন কোড কিভাবে কাজ করে।</p>
+                    <p class="lang-en" style="display: none;">Write code and see output immediately to understand how code works.</p>
+                </div>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">📱</div>
+                <div class="feature-content">
+                    <h3 class="lang-bn">মোবাইল ফ্রেন্ডলি</h3>
+                    <h3 class="lang-en" style="display: none;">Mobile Friendly</h3>
+                    <p class="lang-bn">সব ডিভাইসে সম্পূর্ণ রেসপনসিভ ডিজাইন, যেকোনো সময় যেকোনো জায়গায় শিখুন।</p>
+                    <p class="lang-en" style="display: none;">Fully responsive design on all devices, learn anytime anywhere.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Code Examples Section -->
+    <section class="code-examples">
+        <div class="code-container">
+            <div class="code-header">
+                <h2 class="lang-bn">জাভাস্ক্রিপ্ট উদাহরণ</h2>
+                <h2 class="lang-en" style="display: none;">JavaScript Examples</h2>
+                
+                <div class="code-tabs">
+                    <div class="code-tab active lang-bn" data-tab="variables">ভেরিয়েবল</div>
+                    <div class="code-tab lang-bn" data-tab="functions" style="display: none;">ফাংশন</div>
+                    <div class="code-tab lang-bn" data-tab="loops" style="display: none;">লুপ</div>
+                    
+                    <div class="code-tab lang-en" data-tab="variables" style="display: none;">Variables</div>
+                    <div class="code-tab lang-en" data-tab="functions" style="display: none;">Functions</div>
+                    <div class="code-tab lang-en" data-tab="loops" style="display: none;">Loops</div>
+                </div>
+            </div>
+            
+            <div class="code-content" id="variables-tab">
+                <pre><code>// ভেরিয়েবল ডিক্লেয়ার করা
+var name = "রহিম"; // পুরনো পদ্ধতি
+let age = 25; // পরিবর্তনযোগ্য ভেরিয়েবল
+const country = "Bangladesh"; // ধ্রুবক ভেরিয়েবল
+
+// ভেরিয়েবল ব্যবহার করা
+console.log(name + " এর বয়স " + age + " বছর");
+console.log(`${name} lives in ${country}`);
+
+// আউটপুট:
+// রহিম এর বয়স ২৫ বছর
+// রহিম lives in Bangladesh</code></pre>
+            </div>
+            
+            <div class="code-content" id="functions-tab" style="display: none;">
+                <pre><code>// ফাংশন ডিক্লেয়ার করা
+function greet(name) {
+    return "Hello, " + name + "!";
+}
+
+// অ্যারো ফাংশন
+const multiply = (a, b) => a * b;
+
+// ফাংশন কল করা
+const greeting = greet("আনিকা");
+const result = multiply(5, 7);
+
+console.log(greeting); // Hello, আনিকা!
+console.log(result); // 35</code></pre>
+            </div>
+            
+            <div class="code-content" id="loops-tab" style="display: none;">
+                <pre><code>// for লুপ
+for (let i = 1; i <= 5; i++) {
+    console.log("Count: " + i);
+}
+
+// while লুপ
+let count = 1;
+while (count <= 5) {
+    console.log("While count: " + count);
+    count++;
+}
+
+// Array এর উপর লুপ
+const fruits = ["Apple", "Mango", "Banana"];
+for (let fruit of fruits) {
+    console.log(fruit);
+}
+
+// আউটপুট:
+// Count: 1
+// Count: 2
+// ...
+// Apple
+// Mango
+// Banana</code></pre>
+            </div>
+        </div>
+    </section>
+
+    <!-- Practice Section -->
+    <section class="practice">
+        <h2 class="section-title lang-bn">অনুশীলন করুন</h2>
+        <h2 class="section-title lang-en" style="display: none;">Practice Exercises</h2>
+        
+        <div class="practice-grid">
+            <div class="practice-card">
+                <h3 class="lang-bn">সরল ফাংশন</h3>
+                <h3 class="lang-en" style="display: none;">Simple Function</h3>
+                
+                <p class="lang-bn">একটি ফাংশন লিখুন যা দুইটি সংখ্যা যোগ করে এবং ফলাফল রিটার্ন করে।</p>
+                <p class="lang-en" style="display: none;">Write a function that adds two numbers and returns the result.</p>
+                
+                <div class="code-editor">
+                    <textarea id="code1">function add(a, b) {
+    // আপনার কোড এখানে লিখুন
+    return a + b;
+}
+
+// টেস্ট করুন
+console.log(add(5, 3)); // 8 পাওয়া উচিত
+console.log(add(10, 20)); // 30 পাওয়া উচিত</textarea>
+                </div>
+                
+                <button class="run-btn" onclick="runCode(1)">Run</button>
+                
+                <div class="output" id="output1"></div>
+            </div>
+            
+            <div class="practice-card">
+                <h3 class="lang-bn">স্ট্রিং রিভার্স</h3>
+                <h3 class="lang-en" style="display: none;">String Reverse</h3>
+                
+                <p class="lang-bn">একটি ফাংশন লিখুন যা একটি স্ট্রিং নেয় এবং তা উল্টো করে রিটার্ন করে।</p>
+                <p class="lang-en" style="display: none;">Write a function that takes a string and returns it reversed.</p>
+                
+                <div class="code-editor">
+                    <textarea id="code2">function reverseString(str) {
+    // আপনার কোড এখানে লিখুন
+    return str.split('').reverse().join('');
+}
+
+// টেস্ট করুন
+console.log(reverseString("hello")); // "olleh" পাওয়া উচিত
+console.log(reverseString("JavaScript")); // "tpircSavaJ" পাওয়া উচিত</textarea>
+                </div>
+                
+                <button class="run-btn" onclick="runCode(2)">Run</button>
+                
+                <div class="output" id="output2"></div>
+            </div>
+            
+            <div class="practice-card">
+                <h3 class="lang-bn">অ্যারে ফিল্টার</h3>
+                <h3 class="lang-en" style="display: none;">Array Filter</h3>
+                
+                <p class="lang-bn">একটি ফাংশন লিখুন যা একটি সংখ্যার অ্যারে নেয় এবং শুধুমাত্র জোড় সংখ্যাগুলো রিটার্ন করে।</p>
+                <p class="lang-en" style="display: none;">Write a function that takes an array of numbers and returns only the even numbers.</p>
+                
+                <div class="code-editor">
+                    <textarea id="code3">function filterEven(numbers) {
+    // আপনার কোড এখানে লিখুন
+    return numbers.filter(num => num % 2 === 0);
+}
+
+// টেস্ট করুন
+console.log(filterEven([1, 2, 3, 4, 5, 6])); // [2, 4, 6] পাওয়া উচিত
+console.log(filterEven([10, 15, 20, 25])); // [10, 20] পাওয়া উচিত</textarea>
+                </div>
+                
+                <button class="run-btn" onclick="runCode(3)">Run</button>
+                
+                <div class="output" id="output3"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <p class="lang-bn">জাভাস্ক্রিপ্ট শিখুন - একটি সম্পূর্ণ বাংলা গাইড</p>
+            <p class="lang-en" style="display: none;">Learn JavaScript - A Complete Bengali Guide</p>
+            
+            <div class="footer-links">
+                <a href="#" class="lang-bn">প্রাইভেসি পলিসি</a>
+                <a href="#" class="lang-en" style="display: none;">Privacy Policy</a>
+                
+                <a href="#" class="lang-bn">টার্মস অফ ইউজ</a>
+                <a href="#" class="lang-en" style="display: none;">Terms of Use</a>
+                
+                <a href="#" class="lang-bn">কন্টাক্ট</a>
+                <a href="#" class="lang-en" style="display: none;">Contact</a>
+                
+                <a href="#" class="lang-bn">আমাদের সম্পর্কে</a>
+                <a href="#" class="lang-en" style="display: none;">About Us</a>
+            </div>
+            
+            <p>&copy; 2023 JavaScript শিখুন। সকল права защищены।</p>
+        </div>
+    </footer>
+
+    <script>
+        // Language Toggle Functionality
+        document.getElementById('bn-btn').addEventListener('click', function() {
+            document.querySelectorAll('.lang-en').forEach(el => el.style.display = 'none');
+            document.querySelectorAll('.lang-bn').forEach(el => el.style.display = '');
+            document.getElementById('bn-btn').classList.add('active');
+            document.getElementById('en-btn').classList.remove('active');
+        });
+        
+        document.getElementById('en-btn').addEventListener('click', function() {
+            document.querySelectorAll('.lang-bn').forEach(el => el.style.display = 'none');
+            document.querySelectorAll('.lang-en').forEach(el => el.style.display = '');
+            document.getElementById('en-btn').classList.add('active');
+            document.getElementById('bn-btn').classList.remove('active');
+        });
+        
+        // Code Tab Functionality
+        document.querySelectorAll('.code-tab').forEach(tab => {
+            tab.addEventListener('click', function() {
+                const tabName = this.getAttribute('data-tab');
+                
+                // Hide all code contents
+                document.querySelectorAll('.code-content').forEach(content => {
+                    content.style.display = 'none';
                 });
+                
+                // Show selected tab content
+                document.getElementById(`${tabName}-tab`).style.display = 'block';
+                
+                // Update active tab
+                document.querySelectorAll('.code-tab').forEach(t => t.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+        
+        // Run Code Function
+        function runCode(editorId) {
+            const code = document.getElementById(`code${editorId}`).value;
+            const outputElement = document.getElementById(`output${editorId}`);
+            
+            try {
+                // Capture console.log output
+                let output = '';
+                const originalConsoleLog = console.log;
+                console.log = function(message) {
+                    output += message + '\n';
+                    originalConsoleLog.apply(console, arguments);
+                };
+                
+                // Execute the code
+                eval(code);
+                
+                // Restore original console.log
+                console.log = originalConsoleLog;
+                
+                // Display the output
+                outputElement.textContent = output || 'কোন আউটপুট নেই। / No output.';
+            } catch (error) {
+                outputElement.textContent = 'ত্রুটি: ' + error.message;
+            }
+        }
+        
+        // Add some animation effects
+        document.addEventListener('DOMContentLoaded', function() {
+            const featureCards = document.querySelectorAll('.feature-card');
+            featureCards.forEach((card, index) => {
+                card.style.animation = `fadeInUp 0.5s ease ${index * 0.2}s both`;
+            });
+            
+            const practiceCards = document.querySelectorAll('.practice-card');
+            practiceCards.forEach((card, index) => {
+                card.style.animation = `fadeInUp 0.5s ease ${index * 0.2 + 0.3}s both`;
             });
         });
     </script>
