@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ফ্রীতে ওয়েবসাইট হোস্টিং - সম্পূর্ণ গাইড</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #6a11cb;
+            --secondary: #2575fc;
+            --light: #f8f9fa;
+            --dark: #343a40;
+            --success: #28a745;
+            --warning: #ffc107;
+        }
+        
+        body {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            font-family: 'Segoe UI', Arial, sans-serif;
+            min-height: 100vh;
+            padding: 20px 0;
+        }
+        
+        .container-main {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            overflow: hidden;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+        
+        .content-area {
+            padding: 30px;
+        }
+        
+        .step-card {
+            border: none;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s;
+            margin-bottom: 20px;
+            height: 100%;
+        }
+        
+        .step-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .step-number {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            font-weight: bold;
+            margin: 0 auto 20px;
+        }
+        
+        .option-card {
+            border: none;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            padding: 25px;
+            margin-bottom: 25px;
+            transition: all 0.3s;
+            height: 100%;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .option-card::before {
+            content: 'ফ্রী';
+            position: absolute;
+            top: 15px;
+            right: -30px;
+            background: var(--success);
+            color: white;
+            padding: 5px 30px;
+            font-weight: bold;
+            transform: rotate(45deg);
+            font-size: 14px;
+        }
+        
+        .option-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+        
+        .option-card h4 {
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+        
+        .option-icon {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            border: none;
+            padding: 12px 25px;
+            border-radius: 10px;
+            font-weight: 600;
+            margin-top: 10px;
+        }
+        
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 30px 0;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+        }
+        
+        .comparison-table th, .comparison-table td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .comparison-table th {
+            background-color: var(--primary);
+            color: white;
+        }
+        
+        .comparison-table tr:nth-child(even) {
+            background-color: #f8f9fa;
+        }
+        
+        .comparison-table tr:last-child td {
+            border-bottom: none;
+        }
+        
+        .check-mark {
+            color: var(--success);
+            font-weight: bold;
+        }
+        
+        .cross-mark {
+            color: #dc3545;
+            font-weight: bold;
+        }
+        
+        .footer {
+            background-color: var(--light);
+            padding: 20px;
+            text-align: center;
+            border-top: 1px solid #dee2e6;
+        }
+        
+        .note-box {
+            background-color: #fff3cd;
+            border-left: 4px solid var(--warning);
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+        
+        .info-box {
+            background-color: #d1ecf1;
+            border-left: 4px solid #0c5460;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+        
+        .limitation {
+            color: #dc3545;
+            font-weight: 600;
+        }
+        
+        .feature-list {
+            list-style-type: none;
+            padding: 0;
+        }
+        
+        .feature-list li {
+            padding: 8px 0;
+            border-bottom: 1px dashed #eee;
+        }
+        
+        .feature-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .badge-free {
+            background-color: var(--success);
+            color: white;
+            padding: 3px 10px;
+            border-radius: 30px;
+            font-size: 12px;
+            font-weight: bold;
+            margin-left: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container container-main">
+        <div class="header">
+            <h1><i class="fas fa-rocket me-2"></i>ফ্রীতে ওয়েবসাইট হোস্টিং</h1>
+            <p class="lead">বিনামূল্যে আপনার PDF অর্ডার সিস্টেম অনলাইনে প্রকাশ করুন</p>
+        </div>
+        
+        <div class="content-area">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="note-box">
+                        <h4><i class="fas fa-lightbulb me-2"></i>গুরুত্বপূর্ণ তথ্য</h4>
+                        <p>ফ্রী হোস্টিং সার্ভিসগুলোতে সাধারণত কিছু সীমাবদ্ধতা থাকে, যেমন কাস্টম ডোমেইন, বিজ্ঞাপন প্রদর্শন, বা সীমিত resources। Production এর জন্য paid হোস্টিং better, তবে শুরু করার জন্য ফ্রী optionগুলো excellent।</p>
+                    </div>
+                </div>
+            </div>
+            
+            <h2 class="text-center mb-5">ফ্রীতে ওয়েবসাইট হোস্ট করার ধাপসমূহ</h2>
+            
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <div class="step-card text-center p-4">
+                        <div class="step-number">1</div>
+                        <h4>হোস্টিং provider নির্বাচন</h4>
+                        <p>নিচের ফ্রী হোস্টিং options থেকে একটি বেছে নিন</p>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="step-card text-center p-4">
+                        <div class="step-number">2</div>
+                        <h4>অ্যাকাউন্ট তৈরি করুন</h4>
+                        <p>ইমেইল দিয়ে রেজিস্ট্রেশন করুন</p>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="step-card text-center p-4">
+                        <div class="step-number">3</div>
+                        <h4>ফাইল আপলোড করুন</h4>
+                        <p>আপনার ওয়েবসাইটের ফাইলগুলি আপলোড করুন</p>
+                    </div>
+                </div>
+            </div>
+            
+            <h3 class="text-center mt-5 mb-4">ফ্রী হোস্টিং অপশনসমূহ</h3>
+            
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <div class="option-card text-center">
+                        <div class="option-icon">
+                            <i class="fab fa-github"></i>
+                        </div>
+                        <h4>GitHub Pages</h4>
+                        <p>সবচেয়ে জনপ্রিয় ফ্রী হোস্টিং সলিউশন</p>
+                        <ul class="feature-list">
+                            <li><i class="fas fa-check-circle check-mark me-2"></i>100% ফ্রী</li>
+                            <li><i class="fas fa-check-circle check-mark me-2"></i>কোন বিজ্ঞাপন নেই</li>
+                            <li><i class="fas fa-check-circle check-mark me-2"></i>SSL Certificate</li>
+                            <li><i class="fas fa-check-circle check-mark me-2"></i>কাস্টম ডোমেইন</li>
+                            <li class="limitation"><i class="fas fa-exclamation-circle me-2"></i>সার্ভার-সাইড কোড সাপোর্ট করে না</li>
+                        </ul>
+                        <a href="https://pages.github.com/" target="_blank" class="btn btn-primary">ব্যবহার করুন</a>
+                    </div>
+                </div>
+                
+                <div class="col-md-4 mb-4">
+                    <div class="option-card text-center">
+                        <div class="option-icon">
+                            <i class="fab fa-netlify"></i>
+                        </div>
+                        <h4>Netlify</h4>
+                        <p>আধুনিক ওয়েবসাইটের জন্য চমৎকার প্ল্যাটফর্ম</p>
+                        <ul class="feature-list">
+                            <li><i class="fas fa-check-circle check-mark me-2"></i>100% ফ্রী Tier</li>
+                            <li><i class="fas fa-check-circle check-mark me-2"></i>অটো Deployment</li>
+                            <li><i class="fas fa-check-circle check-mark me-2"></i>ফর্ম হ্যান্ডলিং</li>
+                            <li><i class="fas fa-check-circle check-mark me-2"></i>SSL Certificate</li>
+                            <li class="limitation"><i class="fas fa-exclamation-circle me-2"></i>ব্যান্ডউইথ সীমিত</li>
+                        </ul>
+                        <a href="https://www.netlify.com/" target="_blank" class="btn btn-primary">ব্যবহার করুন</a>
+                    </div>
+                </div>
+                
+                <div class="col-md-4 mb-4">
+                    <div class="option-card text-center">
+                        <div class="option-icon">
+                            <i class="fab fa-google"></i>
+                        </div>
+                        <h4>Firebase Hosting</h4>
+                        <p>Google এর ফ্রী হোস্টিং সার্ভিস</p>
+                        <ul class="feature-list">
+                            <li><i class="fas fa-check-circle check-mark me-2"></i>Google ইনফ্রাস্ট্রাকচার</li>
+                            <li><i class="fas fa-check-circle check-mark me-2"></i>SSL Certificate</li>
+                            <li><i class="fas fa-check-circle check-mark me-2"></i>CDN এক্সেস</li>
+                            <li><i class="fas fa-check-circle check-mark me-2"></i>কাস্টম ডোমেইন</li>
+                            <li class="limitation"><i class="fas fa-exclamation-circle me-2"></i>ব্যবহার সীমিত</li>
+                        </ul>
+                        <a href="https://firebase.google.com/docs/hosting" target="_blank" class="btn btn-primary">ব্যবহার করুন</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row mt-4">
+                <div class="col-md-6 mb-4">
+                    <div class="option-card text-center">
+                        <div class="option-icon">
+                            <i class="fas fa-cloud"></i>
+                        </div>
+                        <h4>Vercel</h4>
+                        <p>Next.js ক্রিয়েটরদের হোস্টিং প্ল্যাটফর্ম</p>
+                        <ul class="feature-list">
+                            <li><i class="fas fa-check-circle check-mark me-2"></i>অটো Deployment</li>
+                            <li><i class="fas fa-check-circle check-mark me-2"></i>SSL Certificate</li>
+                            <li><i class="fas fa-check-circle check-mark me-2"></i>কাস্টম ডোমেইন</li>
+                            <li><i class="fas fa-check-circle check-mark me-2"></i>গ্লোবাল CDN</li>
+                            <li class="limitation"><i class="fas fa-exclamation-circle me-2"></i>ব্যান্ডউইথ সীমিত</li>
+                        </ul>
+                        <a href="https://vercel.com/" target="_blank" class="btn btn-primary">ব্যবহার করুন</a>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 mb-4">
+                    <div class="option-card text-center">
+                        <div class="option-icon">
+                            <i class="fas fa-server"></i>
+                        </div>
+                        <h4>000WebHost</h4>
+                        <p>cPanel based ফ্রী হোস্টিং</p>
+                        <ul class="feature-list">
+                            <li><i class="fas fa-check-circle check-mark me-2"></i>cPanel এক্সেস</li>
+                            <li><i class="fas fa-check-circle check-mark me-2"></i>MySQL ডাটাবেজ</li>
+                            <li><i class="fas fa-check-circle check-mark me-2"></i>ফাইল Manager</li>
+                            <li><i class="fas fa-check-circle check-mark me-2"></i>ওয়েবসাইট Builder</li>
+                            <li class="limitation"><i class="fas fa-exclamation-circle me-2"></i>বিজ্ঞাপন</li>
+                        </ul>
+                        <a href="https://www.000webhost.com/" target="_blank" class="btn btn-primary">ব্যবহার করুন</a>
+                    </div>
+                </div>
+            </div>
+            
+            <h3 class="text-center mt-5 mb-4">হোস্টিং প্রদানকারীদের তুলনা</h3>
+            
+            <div class="table-responsive">
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th>ফিচার</th>
+                            <th>GitHub Pages</th>
+                            <th>Netlify</th>
+                            <th>Firebase Hosting</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>মূল্য</td>
+                            <td>100% ফ্রী</td>
+                            <td>100% ফ্রী</td>
+                            <td>100% ফ্রী</td>
+                        </tr>
+                        <tr>
+                            <td>ব্যান্ডউইথ</td>
+                            <td>অসীম</td>
+                            <td>100GB/মাস</td>
+                            <td>10GB/মাস</td>
+                        </tr>
+                        <tr>
+                            <td>কাস্টম ডোমেইন</td>
+                            <td><i class="fas fa-check-circle check-mark"></i></td>
+                            <td><i class="fas fa-check-circle check-mark"></i></td>
+                            <td><i class="fas fa-check-circle check-mark"></i></td>
+                        </tr>
+                        <tr>
+                            <td>SSL Certificate</td>
+                            <td><i class="fas fa-check-circle check-mark"></i></td>
+                            <td><i class="fas fa-check-circle check-mark"></i></td>
+                            <td><i class="fas fa-check-circle check-mark"></i></td>
+                        </tr>
+                        <tr>
+                            <td>Backend সাপোর্ট</td>
+                            <td><i class="fas fa-times-circle cross-mark"></i></td>
+                            <td><i class="fas fa-check-circle check-mark"></i></td>
+                            <td><i class="fas fa-check-circle check-mark"></i></td>
+                        </tr>
+                        <tr>
+                            <td>ডাটাবেজ</td>
+                            <td><i class="fas fa-times-circle cross-mark"></i></td>
+                            <td><i class="fas fa-check-circle check-mark"></i></td>
+                            <td><i class="fas fa-check-circle check-mark"></i></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <div class="info-box mt-5">
+                <h4><i class="fas fa-info-circle me-2"></i>গুরুত্বপূর্ণ পরামর্শ</h4>
+                <p>আপনার PDF অর্ডার সিস্টেমের জন্য যেহেতু ইউজার অ্যাকাউন্ট এবং ডাটাবেজ প্রয়োজন, তাই Netlify বা Firebase Hosting বেছে নিন। GitHub Pages শুধুমাত্র static ওয়েবসাইটের জন্য suitable।</p>
+            </div>
+            
+            <div class="row mt-5">
+                <div class="col-md-6">
+                    <div class="option-card">
+                        <h4><i class="fas fa-upload me-2"></i>Netlify তে Deployment করার</h4>
+                        <ol>
+                            <li>Netlify.com এ গিয়ে সাইন আপ করুন</li>
+                            <li>"New site from Git" নির্বাচন করুন</li>
+                            <li>আপনার GitHub repository connect করুন</li>
+                            <li>Build settings configure করুন</li>
+                            <li>Deploy করুন এবং আপনার site link copy করুন</li>
+                            <li>কাস্টম ডোমেইন add করুন (যদি প্রয়োজন হয়)</li>
+                        </ol>
+                        <a href="https://www.netlify.com/blog/2016/09/29/a-step-by-step-guide-deploying-on-netlify/" target="_blank" class="btn btn-primary">বিস্তারিত指南</a>
+                    </div>
+                </div>
+                
+                <div class="col-md-6">
+                    <div class="option-card">
+                        <h4><i class="fab fa-google me-2"></i>Firebase Hosting এ Deployment</h4>
+                        <ol>
+                            <li>Google অ্যাকাউন্ট দিয়ে Firebase এ login করুন</li>
+                            <li>একটি new project তৈরি করুন</li>
+                            <li>Firebase CLI install করুন</li>
+                            <li>আপনার প্রোজেক্ট ফোল্ডারে initialize করুন</li>
+                            <li>ফাইলগুলি deploy করুন</li>
+                            <li>আপনার hosting URL টি share করুন</li>
+                        </ol>
+                        <a href="https://firebase.google.com/docs/hosting/quickstart" target="_blank" class="btn btn-primary">বিস্তারিত</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="note-box mt-4">
+                <h4><i class="fas fa-exclamation-triangle me-2"></i>সীমাবদ্ধতা সম্পর্কে</h4>
+                <p>ফ্রী হোস্টিং options গুলোতে কিছু সীমাবদ্ধতা থাকে। যদি আপনার ওয়েবসাইটে অনেক traffic আসে, বা বেশি storage প্রয়োজন হয়, তাহলে paid plan এ upgrade করতে হতে পারে। তবে শুরু করার জন্য ফ্রী optionsই যথেষ্ট।</p>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>&copy; ২০২৩ PDF অর্ডার সিস্টেম। সকল অধিকার সংরক্ষিত।</p>
+            <p class="text-muted">এই গাইডটি আপনার ওয়েবসাইট বিনামূল্যে অনলাইনে প্রকাশ করতে সাহায্য করবে</p>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Netlify deployment এর জন্য ফর্ম
+        document.addEventListener('DOMContentLoaded', function() {
+            const deploymentLinks = document.querySelectorAll('.deployment-link');
+            
+            deploymentLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const platform = this.getAttribute('data-platform');
+                    alert(`আপনি ${platform} তে deployment process শুরু করতে যাচ্ছেন। বিস্তারিত instructions এর জন্য আমাদের গাইড দেখুন।`);
+                    window.open(this.href, '_blank');
+                });
+            });
+        });
+    </script>
+</body>
+</html>
